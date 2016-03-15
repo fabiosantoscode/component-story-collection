@@ -1,3 +1,181 @@
-.story-collection {
+@import '@economist/component-typography';
+@import '@economist/component-palette';
+@import '@economist/component-teaser';
+@import '@economist/component-grid';
+
+:root {
+  --storycollection-main-story-text-nudge: 8px;
+  --storycollection-red-label-width: 47px;
+  --storycollection-red-label-height: 7px;
+  --storycollection-outer-spacing: var(--grid-gutter-xs);
 }
-  
+
+.story-collection {
+  overflow: hidden;
+  margin: var(--storycollection-outer-spacing);
+  font-size: 1rem;
+  background-color: var(--color-thimphu);
+}
+
+/* Titles look like flytitles, and the rubric looks like a title */
+.story-collection .teaser__title {
+  font-family: var(--fontfamily-sans);
+  font-size: var(--text-size-step--3);
+  font-weight: normal;
+  color: var(--color-economist);
+  margin: 0;
+  margin-bottom: var(--grid-spacing-mouse);
+}
+
+.story-collection .teaser__text {
+  font-family: var(--fontfamily-serif);
+  font-size: var(--text-size-step--2);
+  line-height: var(--text-line-height-serif-medium-on-step--2);
+  letter-spacing: var(--text-letter-spacing-serif-medium-on-step--2);
+  font-weight: normal;
+  color: var(--color-beijing);
+  margin: 0;
+  margin-bottom: 0;
+}
+
+.story-collection .teaser__img {
+  margin-bottom: 0;
+}
+
+.story-collection .teaser__group-image--empty {
+  display: block;
+  height: 1px;  /* So that group-text doesn't float into this space */
+}
+
+.story-collection__head,
+.story-collection__main-story,
+.story-collection__rest {
+  padding: var(--storycollection-outer-spacing);
+}
+
+.story-collection__main-story {
+  padding-top: 0;
+}
+
+.story-collection__wrapper {
+  overflow: hidden;
+  background-color: var(--color-berlin);
+}
+
+.story-collection__head {
+  font-family: var(--fontfamily-sans);
+}
+
+.story-collection__head::before {
+  content: '';
+  display: block;
+  position: relative;
+  width: var(--storycollection-red-label-width);
+  height: var(--storycollection-red-label-height);
+  font-size: var(--text-size-step--1);
+  margin-bottom: var(--grid-spacing-hedgehog);
+  background: var(--color-economist);
+}
+
+.story-collection__label {
+  display: inline-block;
+  margin-right: var(--grid-spacing-fox);
+  color: var(--color-beijing);
+  font-weight: bold;
+}
+
+.story-collection__date,
+.story-collection__changed {
+  display: inline-block;
+  color: var(--color-london);
+  font-style: italic;
+}
+
+.story-collection__main-story .teaser__group-image {
+  float: none;
+  width: auto;
+  margin-right: 0;
+}
+
+.story-collection__main-story .teaser__text {
+  margin-bottom: 0;
+  font-size: var(--text-size-step-2);
+  line-height: var(--text-line-height-serif-medium-on-step-2);
+  letter-spacing: var(--text-letter-spacing-serif-medium-on-step-2);
+}
+
+.story-collection__rest {
+  border-top: var(--grid-spacing-hedgehog) solid var(--color-berlin);
+}
+
+.story-collection__rest .teaser__group-image {
+  float: left;
+  width: 33.33%;
+  margin-right: var(--grid-spacing-rabbit);
+}
+
+.story-collection__rest .teaser {
+  margin-bottom: var(--grid-spacing-rabbit);
+  padding-bottom: var(--grid-spacing-rabbit);
+  border-bottom: 1px solid var(--color-berlin);
+}
+
+.story-collection__changed {
+  color: var(--color-london);
+  font-size: var(--text-size-step--2);
+}
+
+@media screen and (min-width: 700px) {
+  .story-collection {
+    padding: var(--storycollection-outer-spacing);
+  }
+  .story-collection__head,
+  .story-collection__main-story,
+  .story-collection__rest {
+    padding: 0;
+  }
+  .story-collection__head {
+    margin-bottom: var(--grid-gutter-s);
+  }
+  .story-collection__main-story,
+  .story-collection__rest {
+    float: left;
+    background: none;
+  }
+  .story-collection__main-story {
+    width: 60%;
+  }
+  .story-collection__main-story .teaser {
+    margin-top: 0;
+    margin-right: var(--grid-gutter-l);
+  }
+  .story-collection__main-story .teaser {
+    position: relative;
+    /* Add padding to the bottom so as to push teaser__group-text down */
+    padding-bottom: var(--storycollection-main-story-text-nudge);
+    /* Then remove the extra size created by the padding */
+    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge));
+    /* (this was done instead of just using `bottom: -8px` because .teaser needs overflow: hidden) */
+  }
+  .story-collection__main-story .teaser__group-text {
+    background: white;
+    position: absolute;
+    bottom: 0;
+    width: 75%;
+    padding-top: 10px;
+  }
+  .story-collection__rest {
+    width: 40%;
+    border-top: none;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .story-collection__main-story {
+    width: 66.66%;
+  }
+  .story-collection__rest {
+    width: 33.33%;
+  }
+}
+
