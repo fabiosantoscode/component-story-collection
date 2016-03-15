@@ -1,0 +1,419 @@
+@font-face {
+  font-family: "EconSans";
+  font-weight: 300;
+  src: url('/assets/ecosans-lig.woff2') format('woff2'), /* Super Modern Browsers */
+  url('/assets/ecosans-lig.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: "EconSans";
+  font-style: normal;
+  src: url('/assets/ecosans-reg.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/ecosans-reg.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: "EconSans";
+  font-weight: 700;
+  src: url('/assets/ecosans-bol.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/assets/ecosans-bol.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: "EconSans";
+  font-style: italic;
+  src: url('/assets/ecosans-ita.woff2') format('woff2'), /* Super Modern Browsers */
+  url('/assets/ecosans-ita.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: "MiloSerifPro";
+  font-style: normal;
+  src: url('/assets/ecoserif-reg.woff2') format('woff2'), /* Super Modern Browsers */
+  url('/assets/ecoserif-reg.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: "MiloSerifPro";
+  font-style: italic;
+  src: url('/assets/ecoserif-ita.woff2') format('woff2'), /* Super Modern Browsers */
+  url('/assets/ecoserif-ita.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: "MiloSerifPro";
+  font-weight: 500;
+  src: url('/assets/ecoserif-med.woff2') format('woff2'), /* Super Modern Browsers */
+  url('/assets/ecoserif-med.woff') format('woff'); /* Pretty Modern Browsers */
+}
+
+/**
+ * Modular scale for type.
+ */
+
+:root {
+  /** Modular scale **/
+  /* http://www.modularscale.com/?20&px&1.125&web&text */  /* Major second */
+
+  /** Line heights **/
+
+  /* Font: Halifax Regular */
+
+  /* Font: Halifax Bold */
+
+  /* Font: Halifax Light */
+
+  /* Font: Ff Milo Serif Pro Med Italic */
+
+  /* Font: Ff Milo Serif Pro */
+
+  /* Font: FF Milo Serif OT Medium */
+
+  /** Letter spacing **/
+  /* Font: Halifax Regular */
+
+  /* Font: Halifax Bold */
+
+  /* Font: Halifax Light */
+
+  /* Font: Ff Milo Serif Pro Med Italic */
+
+  /* Font: Ff Milo Serif Pro */
+
+  /* Font: FF Milo Serif OT Medium */
+}
+
+html {
+  line-height: 1.35;
+  font-size: 18px;
+}
+
+@media screen and (min-width: 500px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * Colors
+ */
+
+.teaser {
+  font-size: 18px;
+  font-size: 1rem;
+  overflow: hidden;
+  font-family: 'EconSans', Tahoma, sans-serif;
+}
+
+.teaser__link {
+  text-decoration: none;
+  display: block;  /* not an inline element either. */
+}
+
+.teaser__group-text {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.teaser__title {
+  font-family: 'MiloSerifPro', Palatino, serif;
+  font-size: 1.26563em;
+  line-height: 1.26;
+  letter-spacing: -0.020em;
+  font-weight: normal;
+  color: #121212;
+  -webkit-box-ordinal-group: 4;
+  -webkit-order: 3;
+      -ms-flex-order: 3;
+          order: 3;
+  margin: 0;
+  margin-bottom: 0.714em;
+}
+
+.teaser__section {
+  font-size: 0.79012em;
+  line-height: 1.34;
+  text-transform: uppercase;
+  font-weight: 300;
+  color: #E3120b;
+  -webkit-box-ordinal-group: 2;
+  -webkit-order: 1;
+      -ms-flex-order: 1;
+          order: 1;
+  margin: 0;
+  margin-bottom: 0.1em;
+}
+
+.teaser__flytitle {
+  font-size: 0.88889em;
+  line-height: 1.4;
+  font-weight: normal;
+  color: #E3120b;
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+      -ms-flex-order: 2;
+          order: 2;
+  margin: 0;
+  margin-bottom: 0.1em;
+}
+
+.teaser__text {
+  font-size: 0.79012em;
+  line-height: 1.4;
+  font-weight: 300;
+  color: #121212;
+  -webkit-box-ordinal-group: 5;
+  -webkit-order: 4;
+      -ms-flex-order: 4;
+          order: 4;
+  margin-bottom: 0.714em;
+}
+
+.teaser__datetime {
+  font-size: 0.62429em;
+  line-height: 1.4;
+  letter-spacing: 0.015em;
+  font-weight: 300;
+  color: #7A7A7A;
+  -webkit-box-ordinal-group: 6;
+  -webkit-order: 5;
+      -ms-flex-order: 5;
+          order: 5;
+}
+
+.teaser__datetime:before {
+  content: '';
+  width: 54px;
+  width: 3rem;
+  height: 1.8px;
+  height: 0.1rem;
+  background-color: #F2F2F2;
+  display: block;
+  margin-bottom: 0.35em;
+}
+
+.teaser__img {
+  width: 100%;
+  margin-bottom: 1.45em;
+  border: none;
+  display: block;  /* Makes sure that the image doesn't have an em box. */
+}
+
+.teaser__group-image {
+  width: 10em;
+}
+
+.teaser__group-image--empty {
+  display: none;
+}
+
+@media (min-width: 44rem) {
+  .teaser__group-image {
+    float: left;
+    margin-right: 1.25rem;
+  }
+
+  .teaser__group-image--empty {
+    display: block;
+    visibility: hidden;
+    min-height: 1px;
+    min-height: 1.25rem;  /* Because if its height is zero it doesn't push group-text to the right */
+  }
+}
+
+/**
+ * Css grid variables
+ */
+
+.story-collection {
+  overflow: hidden;
+  margin: 13.5px;
+  margin: 0.75rem;
+  font-size: 18px;
+  font-size: 1rem;
+  background-color: #FFFFFF;
+}
+
+/* Titles look like flytitles, and the rubric looks like a title */
+
+.story-collection .teaser__title {
+  font-family: 'EconSans', Tahoma, sans-serif;
+  font-size: 0.70233em;
+  font-weight: normal;
+  color: #E3120b;
+  margin: 0;
+  margin-bottom: 0.1em;
+}
+
+.story-collection .teaser__text {
+  font-family: 'MiloSerifPro', Palatino, serif;
+  font-size: 0.79012em;
+  line-height: 1.25;
+  letter-spacing: -0.020em;
+  font-weight: normal;
+  color: #121212;
+  margin: 0;
+  margin-bottom: 0;
+}
+
+.story-collection .teaser__img {
+  margin-bottom: 0;
+}
+
+.story-collection .teaser__group-image--empty {
+  display: block;
+  height: 1px;  /* So that group-text doesn't float into this space */
+}
+
+.story-collection__head,
+.story-collection__main-story,
+.story-collection__rest {
+  padding: 13.5px;
+  padding: 0.75rem;
+}
+
+.story-collection__main-story {
+  padding-top: 0;
+}
+
+.story-collection__wrapper {
+  overflow: hidden;
+  background-color: #F2F2F2;
+}
+
+.story-collection__head {
+  font-family: 'EconSans', Tahoma, sans-serif;
+}
+
+.story-collection__head::before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 47px;
+  height: 7px;
+  font-size: 0.88889em;
+  margin-bottom: 0.35em;
+  background: #E3120b;
+}
+
+.story-collection__label {
+  display: inline-block;
+  margin-right: 1em;
+  color: #121212;
+  font-weight: bold;
+}
+
+.story-collection__date,
+.story-collection__changed {
+  display: inline-block;
+  color: #B6B6B6;
+  font-style: italic;
+}
+
+.story-collection__main-story .teaser__group-image {
+  float: none;
+  width: auto;
+  margin-right: 0;
+}
+
+.story-collection__main-story .teaser__text {
+  margin-bottom: 0;
+  font-size: 1.26563em;
+  line-height: 1.26;
+  letter-spacing: -0.020em;
+}
+
+.story-collection__rest {
+  border-top: 0.35em solid #F2F2F2;
+}
+
+.story-collection__rest .teaser__group-image {
+  float: left;
+  width: 33.33%;
+  margin-right: 0.714em;
+}
+
+.story-collection__rest .teaser {
+  margin-bottom: 0.714em;
+  padding-bottom: 0.714em;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.story-collection__changed {
+  color: #B6B6B6;
+  font-size: 0.79012em;
+}
+
+@media screen and (min-width: 700px) {
+  .story-collection {
+    padding: 0.75rem;
+  }
+  .story-collection__head,
+  .story-collection__main-story,
+  .story-collection__rest {
+    padding: 0;
+  }
+  .story-collection__head {
+    margin-bottom: 1rem;
+  }
+  .story-collection__main-story,
+  .story-collection__rest {
+    float: left;
+    background: none;
+  }
+  .story-collection__main-story {
+    width: 60%;
+  }
+  .story-collection__main-story .teaser {
+    margin-top: 0;
+    margin-right: 1.5rem;
+  }
+  .story-collection__main-story .teaser {
+    position: relative;
+    /* Add padding to the bottom so as to push teaser__group-text down */
+    padding-bottom: 8px;
+    /* Then remove the extra size created by the padding */
+    margin-bottom: -8px;
+    /* (this was done instead of just using `bottom: -8px` because .teaser needs overflow: hidden) */
+  }
+  .story-collection__main-story .teaser__group-text {
+    background: white;
+    position: absolute;
+    bottom: 0;
+    width: 75%;
+    padding-top: 10px;
+  }
+  .story-collection__rest {
+    width: 40%;
+    border-top: none;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .story-collection__main-story {
+    width: 66.66%;
+  }
+  .story-collection__rest {
+    width: 33.33%;
+  }
+}
+
+/* stylelint-disable type-selector */
+
+html, body {
+  font-size: 20px!important;
+}
+
+/* stylelint-enable */
