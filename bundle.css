@@ -410,10 +410,16 @@ body {
   }
 }
 
-/* stylelint-disable type-selector */
+/* stylelint-disable */
 
 html, body {
   font-size: 20px!important;
+}
+
+.story-collection {
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* stylelint-enable */
