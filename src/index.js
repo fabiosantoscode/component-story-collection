@@ -6,7 +6,7 @@ export function StoryCollectionStory({ story, isFirst }) {
   if (!story) {
     return (<div />);
   }
-  const { title, rubric, image, webUrl } = story;
+  const { title, source, image, webUrl } = story;
   if (isFirst) {
     return (
       <div
@@ -14,8 +14,8 @@ export function StoryCollectionStory({ story, isFirst }) {
       >
         <Teaser
           image={{ src: image }}
+          flyTitle={source}
           title={title}
-          text={rubric}
           link={{ href: webUrl }}
         />
       </div>
@@ -24,8 +24,8 @@ export function StoryCollectionStory({ story, isFirst }) {
   return (
     <Teaser
       image={{ src: image }}
+      flyTitle={source}
       title={title}
-      text={rubric}
       link={{ href: webUrl }}
     />
   );
@@ -84,7 +84,7 @@ export default function StoryCollection({
 if (process.env.NODE_ENV !== 'production') {
   const storyShape = React.PropTypes.shape({
     title: React.PropTypes.string,
-    rubric: React.PropTypes.string,
+    source: React.PropTypes.string,
     image: React.PropTypes.string,
     webUrl: React.PropTypes.string,
   });

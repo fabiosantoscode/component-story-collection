@@ -5,41 +5,50 @@
 
 :root {
   --storycollection-main-story-text-nudge: 8px;
+  --storycollection-main-story-text-nudge-tablet: 0.65em;
   --storycollection-red-label-width: 47px;
   --storycollection-red-label-height: 7px;
-  --storycollection-outer-spacing: var(--grid-gutter-xs);
+  --storycollection-inner-spacing: var(--grid-gutter-xs);
+  --storycollection-outer-spacing: var(--grid-gutter-s);
+  --storycollection-inner-spacing-tablet: var(--grid-gutter-s);
+  --storycollection-outer-spacing-tablet: var(--grid-gutter-xl);
+  --storycollection-inner-spacing-desktop: var(--grid-gutter-l);
+
+  --storycollection-main-text-padding: var(--grid-spacing-rabbit);
+  --storycollection-main-flytitle-font-size: var(--text-size-step--2);
+  --storycollection-main-flytitle-line-height: var(--text-line-height-sans-on-step--2);
+
+  --storycollection-main-title-font-size: var(--text-size-step-4);
+  --storycollection-main-title-line-height: var(--text-line-height-serif-medium-on-step-4);
+
+  --storycollection-height-of-title-first-line-in-tablet: calc(
+    var(--storycollection-main-text-padding) +
+    (
+      var(--storycollection-main-flytitle-font-size) *
+      var(--storycollection-main-flytitle-line-height)
+    ) +
+    (
+      var(--storycollection-main-title-font-size) *
+      var(--storycollection-main-flytitle-line-height)
+    ) -
+    var(--storycollection-main-story-text-nudge-tablet)
+  );
 }
 
 .story-collection {
-  overflow: hidden;
   margin: var(--storycollection-outer-spacing);
   font-size: 1rem;
-  background-color: var(--color-thimphu);
-}
-
-/* Titles look like flytitles, and the rubric looks like a title */
-.story-collection .teaser__title {
-  font-family: var(--fontfamily-sans);
-  font-size: var(--text-size-step--3);
-  font-weight: normal;
-  color: var(--color-economist);
-  margin: 0;
-  margin-bottom: var(--grid-spacing-mouse);
-}
-
-.story-collection .teaser__text {
-  font-family: var(--fontfamily-serif);
-  font-size: var(--text-size-step--2);
-  line-height: var(--text-line-height-serif-medium-on-step--2);
-  letter-spacing: var(--text-letter-spacing-serif-medium-on-step--2);
-  font-weight: normal;
-  color: var(--color-beijing);
-  margin: 0;
-  margin-bottom: 0;
 }
 
 .story-collection .teaser__img {
   margin-bottom: 0;
+}
+
+.story-collection__main-story .teaser__group-image {
+  float: none;
+  width: auto;
+  margin-right: calc(-1 * var(--storycollection-outer-spacing));
+  margin-left: calc(-1 * var(--storycollection-outer-spacing));
 }
 
 .story-collection .teaser__group-image--empty {
@@ -47,23 +56,14 @@
   height: 1px;  /* So that group-text doesn't float into this space */
 }
 
-.story-collection__head,
-.story-collection__main-story,
 .story-collection__rest {
-  padding: var(--storycollection-outer-spacing);
-}
-
-.story-collection__main-story {
-  padding-top: 0;
-}
-
-.story-collection__wrapper {
-  overflow: hidden;
-  background-color: var(--color-berlin);
+  padding: var(--storycollection-inner-spacing);
 }
 
 .story-collection__head {
+  margin-bottom: var(--grid-spacing-hedgehog);
   font-family: var(--fontfamily-sans);
+  font-size: var(--text-size-step--2);
 }
 
 .story-collection__head::before {
@@ -72,9 +72,54 @@
   position: relative;
   width: var(--storycollection-red-label-width);
   height: var(--storycollection-red-label-height);
-  font-size: var(--text-size-step--1);
-  margin-bottom: var(--grid-spacing-hedgehog);
+  margin-bottom: var(--grid-spacing-mouse);
   background: var(--color-economist);
+}
+
+.story-collection__rest {
+  padding-top: 0;
+}
+
+.story-collection .teaser__group-text {
+  padding-bottom: 0;
+}
+
+.story-collection .teaser__title {
+  font-weight: 500;
+  font-size: var(--text-size-step--2);
+  margin-bottom: 0;
+}
+
+.story-collection__main-story .teaser {
+  overflow: visible;
+  position: relative;
+  /* Add padding to the bottom so as to push teaser__group-text down */
+  /* Then remove the extra size created by the padding */
+  /* (this was done instead of just using `bottom: -8px` because .teaser needs overflow: hidden) */
+  padding-bottom: var(--storycollection-main-story-text-nudge);
+}
+
+.story-collection__main-story .teaser__group-text {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: var(--storycollection-inner-spacing);
+  padding-bottom: 0;
+}
+
+.story-collection .teaser__flytitle {
+  font-size: var(--text-size-step--3);
+}
+
+.story-collection__rest,
+.teaser__group-text {
+  background: var(--color-thimphu);
+}
+
+.story-collection__wrapper {
+  overflow: hidden;
+  background-color: var(--color-berlin);
 }
 
 .story-collection__label {
@@ -91,21 +136,10 @@
   font-style: italic;
 }
 
-.story-collection__main-story .teaser__group-image {
-  float: none;
-  width: auto;
-  margin-right: 0;
-}
-
-.story-collection__main-story .teaser__text {
-  margin-bottom: 0;
-  font-size: var(--text-size-step-2);
-  line-height: var(--text-line-height-serif-medium-on-step-2);
+.story-collection__main-story .teaser__title {
+  font-size: var(--text-size-step-3);
   letter-spacing: var(--text-letter-spacing-serif-medium-on-step-2);
-}
-
-.story-collection__rest {
-  border-top: var(--grid-spacing-hedgehog) solid var(--color-berlin);
+  line-height: var(--text-line-height-serif-medium-on-step-2);
 }
 
 .story-collection__rest .teaser__group-image {
@@ -114,10 +148,11 @@
   margin-right: var(--grid-spacing-rabbit);
 }
 
-.story-collection__rest .teaser {
-  margin-bottom: var(--grid-spacing-rabbit);
-  padding-bottom: var(--grid-spacing-rabbit);
-  border-bottom: 1px solid var(--color-berlin);
+.story-collection__changed,
+.story-collection__rest .teaser__link {
+  margin-top: var(--grid-spacing-fox);
+  padding-top: var(--grid-spacing-fox);
+  border-top: 1px solid var(--color-berlin);
 }
 
 .story-collection__changed {
@@ -125,17 +160,45 @@
   font-size: var(--text-size-step--2);
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 450px) {
   .story-collection {
-    padding: var(--storycollection-outer-spacing);
+    overflow: hidden;
+    padding: var(--storycollection-inner-spacing-tablet);
+    margin: var(--storycollection-outer-spacing-tablet);
+    background: var(--color-thimphu);
   }
-  .story-collection__head,
-  .story-collection__main-story,
+  .story-collection__head {
+    margin-bottom: var(--grid-spacing-rabbit);
+  }
+  .story-collection__main-story .teaser__group-image {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .story-collection__main-story .teaser__group-text {
+    right: auto;
+    width: 70%;
+    position: relative;
+    top: calc(-1 * var(--storycollection-height-of-title-first-line-in-tablet));
+    margin-bottom: calc(-1 * var(--storycollection-height-of-title-first-line-in-tablet));
+    padding: var(--storycollection-main-text-padding);
+    padding-left: 0;
+  }
+  .story-collection__main-story .teaser__flytitle {
+    font-size: var(--storycollection-main-flytitle-font-size);
+    line-height: var(--storycollection-main-flytitle-line-height);
+  }
+  .story-collection__main-story .teaser__title {
+    font-size: var(--storycollection-main-title-font-size);
+    line-height: var(--storycollection-main-title-line-height);
+  }
   .story-collection__rest {
     padding: 0;
   }
-  .story-collection__head {
-    margin-bottom: var(--grid-gutter-s);
+}
+
+@media screen and (min-width: 900px) {
+  .story-collection {
+    padding: var(--storycollection-inner-spacing-desktop);
   }
   .story-collection__main-story,
   .story-collection__rest {
@@ -149,24 +212,13 @@
     margin-top: 0;
     margin-right: var(--grid-gutter-l);
   }
-  .story-collection__main-story .teaser {
-    position: relative;
-    /* Add padding to the bottom so as to push teaser__group-text down */
-    padding-bottom: var(--storycollection-main-story-text-nudge);
-    /* Then remove the extra size created by the padding */
-    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge));
-    /* (this was done instead of just using `bottom: -8px` because .teaser needs overflow: hidden) */
-  }
-  .story-collection__main-story .teaser__group-text {
-    background: white;
-    position: absolute;
-    bottom: 0;
-    width: 75%;
-    padding-top: 10px;
-  }
   .story-collection__rest {
     width: 40%;
-    border-top: none;
+  }
+  .story-collection__rest .teaser:first-child .teaser__link {
+    padding-top: 0;
+    border-top: 0 none;
+    margin-top: 0;
   }
 }
 
@@ -176,6 +228,11 @@
   }
   .story-collection__rest {
     width: 33.33%;
+  }
+  .story-collection__changed,
+  .story-collection__rest .teaser:not(:first-child) .teaser__link {
+    margin-top: var(--grid-spacing-sheep);
+    padding-top: var(--grid-spacing-sheep);
   }
 }
 
