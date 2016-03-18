@@ -69898,7 +69898,7 @@ function StoryCollectionStory(_ref) {
     return _react2['default'].createElement('div', null);
   }
   var title = story.title;
-  var rubric = story.rubric;
+  var source = story.source;
   var image = story.image;
   var webUrl = story.webUrl;
 
@@ -69910,16 +69910,16 @@ function StoryCollectionStory(_ref) {
       },
       _react2['default'].createElement(_economistComponentTeaser2['default'], {
         image: { src: image },
+        flyTitle: source,
         title: title,
-        text: rubric,
         link: { href: webUrl }
       })
     );
   }
   return _react2['default'].createElement(_economistComponentTeaser2['default'], {
     image: { src: image },
+    flyTitle: source,
     title: title,
-    text: rubric,
     link: { href: webUrl }
   });
 }
@@ -69979,7 +69979,7 @@ function StoryCollection(_ref2) {
 if (process.env.NODE_ENV !== 'production') {
   var storyShape = _react2['default'].PropTypes.shape({
     title: _react2['default'].PropTypes.string,
-    rubric: _react2['default'].PropTypes.string,
+    source: _react2['default'].PropTypes.string,
     image: _react2['default'].PropTypes.string,
     webUrl: _react2['default'].PropTypes.string
   });
@@ -70109,21 +70109,25 @@ var exampleStories = [{
   title: 'You\'ll pay for this!',
   rubric: 'Firms are no longer willing to foot the bill for executives\' education',
   image: 'http://cdn.static-economist.com/sites/default/files/20150516_BLP510_0.jpg',
+  source: 'The Economist online',
   webUrl: '/whichmba/financing-embas-youll-pay'
 }, {
   title: 'As more firms have set up their own “corporate universities”, they have become less willing to pay for their managers to go to business school',
   rubric: 'As more firms have set up their own “corporate universities”, they have become less willing to pay for their managers to go to business school',
   image: 'http://cdn.static-economist.com/sites/default/files/20150516_WBD001.jpg',
+  source: 'The Economist online',
   webUrl: '/news/business/21651217-more-firms-have-set-up-their-own-corporate-universities-they-have-become-less-willing-pay'
 }, {
   title: 'EMBA\'s supercommuters',
   rubric: 'How far will students commute to attend a prestigious programme?',
   image: 'http://cdn.static-economist.com/sites/default/files/20150516_BLP511_0.jpg',
+  source: 'The Economist online',
   webUrl: '/whichmba/emba-supercommuters-interminable-terminals'
 }, {
   title: 'Methodology',
   rubric: 'How the 2015 Economist EMBA ranking was calculated',
   image: '',
+  source: 'The Economist online',
   webUrl: '/whichmba/methodology-2'
 }];
 /* eslint-enable max-len */
