@@ -8,6 +8,7 @@
   --storycollection-main-story-text-nudge-tablet: 0.65em;
   --storycollection-red-label-width: 47px;
   --storycollection-red-label-height: 7px;
+  --storycollection-chasm-height: 6px;
   --storycollection-inner-spacing: var(--grid-gutter-xs);
   --storycollection-outer-spacing: var(--grid-gutter-s);
   --storycollection-inner-spacing-tablet: var(--grid-gutter-s);
@@ -80,10 +81,7 @@
 }
 
 .story-collection__main-story .teaser {
-  /* Add padding to the bottom so as to push teaser__group-text down */
-  /* Then remove the extra size created by the padding */
-  /* (this was done instead of just using `bottom: -8px` because .teaser needs overflow: hidden) */
-  padding-bottom: var(--storycollection-main-story-text-nudge);
+  padding-bottom: var(--grid-spacing-rabbit);
 }
 
 .story-collection .teaser__flytitle {
@@ -115,6 +113,17 @@
   line-height: var(--text-line-height-serif-medium-on-step-2);
 }
 
+.story-collection__rest::before {
+  content: '';
+  display: block;
+  width: auto;
+  height: var(--storycollection-chasm-height);
+  margin-left: calc(-1 * var(--storycollection-inner-spacing));
+  margin-right: calc(-1 * var(--storycollection-inner-spacing));
+  margin-bottom: var(--grid-spacing-rabbit);
+  background: var(--color-berlin);
+}
+
 .story-collection__rest .teaser__group-image {
   float: left;
   width: 33.33%;
@@ -122,7 +131,7 @@
 }
 
 .story-collection__changed,
-.story-collection__rest .teaser__link {
+.story-collection__rest .teaser:not(:first-child) .teaser__link {
   margin-top: var(--grid-spacing-fox);
   padding-top: var(--grid-spacing-fox);
   border-top: 1px solid var(--color-berlin);
@@ -134,6 +143,9 @@
 }
 
 @media screen and (min-width: 600px) {
+  .story-collection__rest::before {
+    display: none;
+  }
   .story-collection {
     overflow: hidden;
     padding: var(--storycollection-inner-spacing-tablet);
@@ -167,6 +179,9 @@
 }
 
 @media screen and (min-width: 1000px) {
+  .story-collection__main-story .teaser {
+    padding-bottom: var(--storycollection-main-story-text-nudge);
+  }
   .story-collection {
     padding: var(--storycollection-inner-spacing-desktop);
   }
@@ -183,11 +198,6 @@
   }
   .story-collection__rest {
     width: 40%;
-  }
-  .story-collection__rest .teaser:first-child .teaser__link {
-    padding-top: 0;
-    border-top: 0 none;
-    margin-top: 0;
   }
 }
 
