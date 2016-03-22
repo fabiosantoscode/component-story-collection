@@ -5,31 +5,27 @@ import Storycollection from './';
 const exampleStories = [
   {
     title: 'You\'ll pay for this!',
-    rubric: 'Firms are no longer willing to foot the bill for executives\' education',
     image: 'http://cdn.static-economist.com/sites/default/files/20150516_BLP510_0.jpg',
     source: 'The Economist online',
     webUrl: '/whichmba/financing-embas-youll-pay',
   },
   {
-    title: 'As more firms have set up their own “corporate universities”, they have become less willing to pay for their managers to go to business school',
-    rubric: 'As more firms have set up their own “corporate universities”, they have become less willing to pay for their managers to go to business school',
+    title: 'Keeping it on the company campus',
     image: 'http://cdn.static-economist.com/sites/default/files/20150516_WBD001.jpg',
     source: 'The Economist online',
     webUrl: '/news/business/21651217-more-firms-have-set-up-their-own-corporate-universities-they-have-become-less-willing-pay',
   },
   {
-    title: 'EMBA\'s supercommuters',
-    rubric: 'How far will students commute to attend a prestigious programme?',
+    title: 'EMBA supercommuters: Interminable terminals',
     image: 'http://cdn.static-economist.com/sites/default/files/20150516_BLP511_0.jpg',
     source: 'The Economist online',
     webUrl: '/whichmba/emba-supercommuters-interminable-terminals',
   },
   {
-    title: 'Methodology',
-    rubric: 'How the 2015 Economist EMBA ranking was calculated',
-    image: '',
-    source: 'The Economist online',
-    webUrl: '/whichmba/methodology-2',
+    title: 'Donald Trump reveals his isolationist foreign-policy instincts',
+    image: 'http://cdn.static-economist.com/sites/default/files/images/2016/03/blogs/democracy-america/20160326_usp504.jpg',
+    source: 'Democray in America',
+    webUrl: '/blogs/democracyinamerica/2016/03/aipac-and-foreign-policy',
   },
 ];
 /* eslint-enable max-len */
