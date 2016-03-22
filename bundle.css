@@ -238,8 +238,8 @@ body {
  */
 
 .story-collection {
-  margin: 13.5px;
-  margin: 0.75rem;
+  margin: 18px;
+  margin: 1rem;
   font-size: 18px;
   font-size: 1rem;
 }
@@ -251,10 +251,10 @@ body {
 .story-collection__main-story .teaser__group-image {
   float: none;
   width: auto;
-  margin-right: -13.5px;
-  margin-right: -0.75rem;
-  margin-left: -13.5px;
-  margin-left: -0.75rem;
+  margin-right: -18px;
+  margin-right: -1rem;
+  margin-left: -18px;
+  margin-left: -1rem;
 }
 
 .story-collection .teaser__group-image--empty {
@@ -262,17 +262,15 @@ body {
   height: 1px;  /* So that group-text doesn't float into this space */
 }
 
-.story-collection__head,
-.story-collection__rest,
-.teaser__group-text {
+.story-collection__rest {
   padding: 13.5px;
   padding: 0.75rem;
 }
 
 .story-collection__head {
-  padding-right: 0;
-  padding-left: 0;
+  margin-bottom: 0.35em;
   font-family: 'EconSans', Tahoma, sans-serif;
+  font-size: 0.79012em;
 }
 
 .story-collection__head::before {
@@ -281,8 +279,7 @@ body {
   position: relative;
   width: 47px;
   height: 7px;
-  margin-bottom: 0.35em;
-  font-size: 0.88889em;
+  margin-bottom: 0.1em;
   background: #E3120b;
 }
 
@@ -290,8 +287,14 @@ body {
   padding-top: 0;
 }
 
-.teaser__group-text {
+.story-collection .teaser__group-text {
   padding-bottom: 0;
+}
+
+.story-collection .teaser__title {
+  font-weight: 500;
+  font-size: 0.79012em;
+  margin-bottom: 0;
 }
 
 .story-collection__main-story .teaser {
@@ -300,7 +303,6 @@ body {
   /* Add padding to the bottom so as to push teaser__group-text down */
   /* Then remove the extra size created by the padding */
   /* (this was done instead of just using `bottom: -8px` because .teaser needs overflow: hidden) */
-  margin-bottom: -8px;
   padding-bottom: 8px;
 }
 
@@ -309,7 +311,13 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  padding-top: 10px;
+  padding: 13.5px;
+  padding: 0.75rem;
+  padding-bottom: 0;
+}
+
+.story-collection .teaser__flytitle {
+  font-size: 0.70233em;
 }
 
 .story-collection__rest,
@@ -337,8 +345,7 @@ body {
 }
 
 .story-collection__main-story .teaser__title {
-  margin-bottom: 0;
-  font-size: 1.26563em;
+  font-size: 1.42383em;
   letter-spacing: -0.020em;
   line-height: 1.26;
 }
@@ -349,15 +356,11 @@ body {
   margin-right: 0.714em;
 }
 
-.story-collection__rest .teaser:first-child {
-  padding-top: 0.714em;
+.story-collection__changed,
+.story-collection__rest .teaser__link {
+  margin-top: 1em;
+  padding-top: 1em;
   border-top: 1px solid #F2F2F2;
-}
-
-.story-collection__rest .teaser {
-  margin-bottom: 0.714em;
-  padding-bottom: 0.714em;
-  border-bottom: 1px solid #F2F2F2;
 }
 
 .story-collection__changed {
@@ -365,19 +368,45 @@ body {
   font-size: 0.79012em;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 450px) {
   .story-collection {
     overflow: hidden;
-    padding: 0.75rem;
+    padding: 1rem;
+    margin: 2rem;
     background: #FFFFFF;
   }
-  .story-collection__head,
-  .story-collection__main-story,
+  .story-collection__head {
+    margin-bottom: 0.714em;
+  }
+  .story-collection__main-story .teaser__group-image {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .story-collection__main-story .teaser__group-text {
+    right: auto;
+    width: 70%;
+    position: relative;
+    top: -3.26919em;
+    margin-bottom: -3.26919em;
+    padding: 0.714em;
+    padding-left: 0;
+  }
+  .story-collection__main-story .teaser__flytitle {
+    font-size: 0.79012em;
+    line-height: 1.34;
+  }
+  .story-collection__main-story .teaser__title {
+    font-size: 1.60181em;
+    line-height: 1.25;
+  }
   .story-collection__rest {
     padding: 0;
   }
-  .story-collection__head {
-    margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 900px) {
+  .story-collection {
+    padding: 1.5rem;
   }
   .story-collection__main-story,
   .story-collection__rest {
@@ -393,15 +422,11 @@ body {
   }
   .story-collection__rest {
     width: 40%;
-    border-top: none;
   }
-  .story-collection__main-story .teaser__group-text {
-    right: auto;
-    width: 75%;
-  }
-  .story-collection__main-story .teaser__group-image {
-    margin-right: 0;
-    margin-left: 0;
+  .story-collection__rest .teaser:first-child .teaser__link {
+    padding-top: 0;
+    border-top: 0 none;
+    margin-top: 0;
   }
 }
 
@@ -411,6 +436,11 @@ body {
   }
   .story-collection__rest {
     width: 33.33%;
+  }
+  .story-collection__changed,
+  .story-collection__rest .teaser:not(:first-child) .teaser__link {
+    margin-top: 1.45em;
+    padding-top: 1.45em;
   }
 }
 
