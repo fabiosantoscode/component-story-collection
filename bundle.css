@@ -285,10 +285,7 @@ body {
 }
 
 .story-collection__main-story .teaser {
-  /* Add padding to the bottom so as to push teaser__group-text down */
-  /* Then remove the extra size created by the padding */
-  /* (this was done instead of just using `bottom: -8px` because .teaser needs overflow: hidden) */
-  padding-bottom: 8px;
+  padding-bottom: 0.714em;
 }
 
 .story-collection .teaser__flytitle {
@@ -320,6 +317,19 @@ body {
   line-height: 1.26;
 }
 
+.story-collection__rest::before {
+  content: '';
+  display: block;
+  width: auto;
+  height: 6px;
+  margin-left: -13.5px;
+  margin-left: -0.75rem;
+  margin-right: -13.5px;
+  margin-right: -0.75rem;
+  margin-bottom: 0.714em;
+  background: #F2F2F2;
+}
+
 .story-collection__rest .teaser__group-image {
   float: left;
   width: 33.33%;
@@ -327,7 +337,7 @@ body {
 }
 
 .story-collection__changed,
-.story-collection__rest .teaser__link {
+.story-collection__rest .teaser:not(:first-child) .teaser__link {
   margin-top: 1em;
   padding-top: 1em;
   border-top: 1px solid #F2F2F2;
@@ -339,6 +349,9 @@ body {
 }
 
 @media screen and (min-width: 600px) {
+  .story-collection__rest::before {
+    display: none;
+  }
   .story-collection {
     overflow: hidden;
     padding: 1rem;
@@ -372,6 +385,9 @@ body {
 }
 
 @media screen and (min-width: 1000px) {
+  .story-collection__main-story .teaser {
+    padding-bottom: 8px;
+  }
   .story-collection {
     padding: 1.5rem;
   }
@@ -388,11 +404,6 @@ body {
   }
   .story-collection__rest {
     width: 40%;
-  }
-  .story-collection__rest .teaser:first-child .teaser__link {
-    padding-top: 0;
-    border-top: 0 none;
-    margin-top: 0;
   }
 }
 
