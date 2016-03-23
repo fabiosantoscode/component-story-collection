@@ -17,6 +17,7 @@
   --storycollection-outer-spacing-desktop: var(--grid-gutter-xl);
 
   --storycollection-main-text-padding: var(--grid-spacing-rabbit);
+  --storycollection-main-story-desktop-white-padding: var(--grid-gutter-l);
 }
 
 .story-collection {
@@ -186,23 +187,35 @@
   .story-collection__rest {
     width: 40%;
   }
+  .story-collection__changed {
+    clear: both;
+    float: right;
+    width: 40%;
+    height: 0px;
+    /* Pull myself up by my own height */
+    top: calc( -1em * var(--text-line-height-sans-on-step--2) );
+    position: relative;
+  }
 }
 
 @media screen and (min-width: 1100px) {
   .story-collection {
     padding: var(--storycollection-inner-spacing-desktop);
   }
+  .story-collection__wrapper {
+    padding: var(--storycollection-outer-spacing-desktop);
+  }
   .story-collection__main-story {
     width: 66.66%;
   }
+  .story-collection__changed,
   .story-collection__rest {
     width: 33.33%;
   }
   .story-collection__main .teaser__group-text {
     margin-bottom: calc( -1 * var(--storycollection-main-story-text-nudge) );
-  }
-  .story-collection__wrapper {
-    padding: var(--storycollection-outer-spacing-desktop);
+    padding-top: var(--storycollection-main-story-desktop-white-padding);
+    padding-right: var(--storycollection-main-story-desktop-white-padding);
   }
   .story-collection__main-story .teaser__flytitle {
     font-size: var(--text-size-step--2);

@@ -78,8 +78,8 @@ export default function StoryCollection({
         {firstStory}
         <div className="story-collection__rest">
           {remainingStories}
-          {changedText}
         </div>
+        {changedText}
       </aside>
     </div>
   );
