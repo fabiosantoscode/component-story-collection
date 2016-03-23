@@ -32,24 +32,28 @@ function StoryCollectionStory(_ref) {
     return _react2['default'].createElement('div', null);
   }
   var title = story.title;
-  var rubric = story.rubric;
+  var source = story.source;
   var image = story.image;
   var webUrl = story.webUrl;
 
   if (isFirst) {
+    if (title.length > 70) {
+      // Deter editors from writing huge titles
+      title = title.substring(0, 67) + '...';
+    }
     return _react2['default'].createElement('div', {
       className: 'story-collection__main-story'
     }, _react2['default'].createElement(_economistComponentTeaser2['default'], {
       image: { src: image },
+      flyTitle: source,
       title: title,
-      text: rubric,
       link: { href: webUrl }
     }));
   }
   return _react2['default'].createElement(_economistComponentTeaser2['default'], {
     image: { src: image },
+    flyTitle: source,
     title: title,
-    text: rubric,
     link: { href: webUrl }
   });
 }
@@ -77,7 +81,7 @@ function StoryCollection(_ref2) {
 if (process.env.NODE_ENV !== 'production') {
   var storyShape = _react2['default'].PropTypes.shape({
     title: _react2['default'].PropTypes.string,
-    rubric: _react2['default'].PropTypes.string,
+    source: _react2['default'].PropTypes.string,
     image: _react2['default'].PropTypes.string,
     webUrl: _react2['default'].PropTypes.string
   });
@@ -69903,6 +69907,10 @@ function StoryCollectionStory(_ref) {
   var webUrl = story.webUrl;
 
   if (isFirst) {
+    if (title.length > 70) {
+      // Deter editors from writing huge titles
+      title = title.substring(0, 67) + '...';
+    }
     return _react2['default'].createElement(
       'div',
       {
@@ -70041,7 +70049,7 @@ describe('StoryCollection', function () {
       var genFakeStory = function genFakeStory(i) {
         return {
           title: 'Fake title ' + i,
-          rubric: 'Fake rubric ' + i,
+          source: 'Fake source ' + i,
           image: 'http://images.io/' + i + '.jpg',
           webUrl: '/' + i
         };
@@ -70066,12 +70074,12 @@ describe('StoryCollection', function () {
 
       remainingTeasers.should.have.length(3);
       firstTeaser.props.should.have.property('title', 'Fake title 0');
-      firstTeaser.props.should.have.property('text', 'Fake rubric 0');
+      firstTeaser.props.should.have.property('flyTitle', 'Fake source 0');
       firstTeaser.props.image.should.have.property('src', 'http://images.io/0.jpg');
       firstTeaser.props.link.should.have.property('href', '/0');
 
       remainingTeasers[0].props.should.have.property('title', 'Fake title 1');
-      remainingTeasers[0].props.should.have.property('text', 'Fake rubric 1');
+      remainingTeasers[0].props.should.have.property('flyTitle', 'Fake source 1');
       remainingTeasers[0].props.image.should.have.property('src', 'http://images.io/1.jpg');
       remainingTeasers[0].props.link.should.have.property('href', '/1');
     });
@@ -70081,6 +70089,18 @@ describe('StoryCollection', function () {
       var teaserInMainStoryWrapper = mainStoryWrapper.find(_economistComponentTeaser2['default']);
       teaserInMainStoryWrapper.should.have.length(1);
       teaserInMainStoryWrapper.get(0).should.equal(firstTeaser);
+    });
+    it('First teaser gets its title cut to 70 characters', function () {
+      fakeStories[0].title = Array(90).join('X');
+      collection = (0, _enzyme.mount)(_react2['default'].createElement(_2['default'], {
+        stories: fakeStories,
+        date: fakeDate,
+        changed: fakeChanged,
+        label: fakeLabel
+      }));
+      var firstTeaser = collection.find(_economistComponentTeaser2['default']).get(0);
+      firstTeaser.props.title.should.have.length(70);
+      firstTeaser.props.title.should.match(/^X{67}\.\.\.$/);
     });
   });
 });

@@ -238,23 +238,34 @@ body {
  */
 
 .story-collection {
-  background: #FFFFFF;
-  margin: 18px;
-  margin: 1rem;
+  overflow: hidden;
   padding: 13.5px;
   padding: 0.75rem;
+  margin: 0 auto;
+  background: #FFFFFF;
   font-size: 18px;
   font-size: 1rem;
+  font-family: 'EconSans', Tahoma, sans-serif;
+}
+
+.story-collection__wrapper {
+  padding: 13.5px;
+  padding: 0.75rem;
 }
 
 .story-collection .teaser__img {
   margin-bottom: 0;
 }
 
+.story-collection .teaser__link {
+  overflow: visible;
+}
+
 .story-collection__main-story .teaser__group-image {
   float: none;
   width: auto;
   margin-bottom: 0.35em;
+  margin-right: 0;
 }
 
 .story-collection .teaser__group-image--empty {
@@ -264,7 +275,6 @@ body {
 
 .story-collection__head {
   margin-bottom: 0.714em;
-  font-family: 'EconSans', Tahoma, sans-serif;
   font-size: 0.79012em;
 }
 
@@ -274,8 +284,12 @@ body {
   position: relative;
   width: 47px;
   height: 7px;
-  margin-bottom: 0.1em;
+  margin-bottom: 0.35em;
   background: #E3120b;
+}
+
+.story-collection__date {
+  display: inline-block;
 }
 
 .story-collection .teaser__title {
@@ -306,13 +320,12 @@ body {
 
 .story-collection__date,
 .story-collection__changed {
-  display: inline-block;
   color: #B6B6B6;
   font-style: italic;
 }
 
 .story-collection__main-story .teaser__title {
-  font-size: 1.42383em;
+  font-size: 1.26563em;
   letter-spacing: -0.020em;
   line-height: 1.26;
 }
@@ -321,7 +334,7 @@ body {
   content: '';
   display: block;
   width: auto;
-  height: 6px;
+  height: 5px;
   margin-left: -13.5px;
   margin-left: -0.75rem;
   margin-right: -13.5px;
@@ -336,60 +349,51 @@ body {
   margin-right: 0.714em;
 }
 
-.story-collection__changed,
-.story-collection__rest .teaser:not(:first-child) .teaser__link {
-  margin-top: 1em;
-  padding-top: 1em;
-  border-top: 1px solid #F2F2F2;
+.story-collection__rest .teaser__link {
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #F2F2F2;
+  overflow: hidden;
 }
 
 .story-collection__changed {
   color: #B6B6B6;
-  font-size: 0.79012em;
+  font-size: 0.62429em;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 900px) {
   .story-collection__rest::before {
     display: none;
   }
   .story-collection {
-    overflow: hidden;
     padding: 1rem;
-    margin: 2rem;
+  }
+  .story-collection__wrapper {
+    padding: 0.75rem;
   }
   .story-collection__main-story .teaser__group-image {
-    margin-right: 0;
-    margin-left: 0;
+    margin: 0;
+  }
+  .story-collection__main-story .teaser__link {
+    position: relative;
   }
   .story-collection__main-story .teaser__group-text {
     right: auto;
     width: 70%;
-    position: relative;
-    top: -3.26919em;
-    margin-bottom: -3.26919em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     padding: 0.714em;
-    background: #FFFFFF;
     padding-left: 0;
+    padding-bottom: 0;
+    margin-bottom: -0.3em;
+    background: #FFFFFF;
   }
   .story-collection__main-story .teaser__flytitle {
-    font-size: 0.79012em;
-    line-height: 1.34;
+    margin-bottom: 0;
   }
-  .story-collection__main-story .teaser__title {
-    font-size: 1.60181em;
-    line-height: 1.25;
-  }
-  .story-collection__rest {
-    padding: 0;
-  }
-}
-
-@media screen and (min-width: 1000px) {
   .story-collection__main-story .teaser {
-    padding-bottom: 8px;
-  }
-  .story-collection {
-    padding: 1.5rem;
+    padding-bottom: 0.3em;
   }
   .story-collection__main-story,
   .story-collection__rest {
@@ -407,17 +411,29 @@ body {
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1100px) {
+  .story-collection {
+    padding: 1.5rem;
+  }
   .story-collection__main-story {
     width: 66.66%;
   }
   .story-collection__rest {
     width: 33.33%;
   }
-  .story-collection__changed,
-  .story-collection__rest .teaser:not(:first-child) .teaser__link {
-    margin-top: 1.45em;
-    padding-top: 1.45em;
+  .story-collection__main .teaser__group-text {
+    margin-bottom: -0.3em;
+  }
+  .story-collection__wrapper {
+    padding: 2rem;
+  }
+  .story-collection__main-story .teaser__flytitle {
+    font-size: 0.79012em;
+    line-height: 1.34;
+  }
+  .story-collection__main-story .teaser__title {
+    font-size: 1.60181em;
+    line-height: 1.25;
   }
 }
 
