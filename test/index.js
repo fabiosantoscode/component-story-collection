@@ -17,7 +17,7 @@ describe('StoryCollection', () => {
     beforeEach(() => {
       const genFakeStory = (i) => ({
         title: `Fake title ${ i }`,
-        rubric: `Fake rubric ${ i }`,
+        source: `Fake source ${ i }`,
         image: `http://images.io/${ i }.jpg`,
         webUrl: `/${ i }`,
       });
@@ -43,12 +43,12 @@ describe('StoryCollection', () => {
       const [ firstTeaser, ...remainingTeasers ] = collection.find(Teaser).nodes;
       remainingTeasers.should.have.length(3);
       firstTeaser.props.should.have.property('title', 'Fake title 0');
-      firstTeaser.props.should.have.property('text', 'Fake rubric 0');
+      firstTeaser.props.should.have.property('flyTitle', 'Fake source 0');
       firstTeaser.props.image.should.have.property('src', 'http://images.io/0.jpg');
       firstTeaser.props.link.should.have.property('href', '/0');
 
       remainingTeasers[0].props.should.have.property('title', 'Fake title 1');
-      remainingTeasers[0].props.should.have.property('text', 'Fake rubric 1');
+      remainingTeasers[0].props.should.have.property('flyTitle', 'Fake source 1');
       remainingTeasers[0].props.image.should.have.property('src', 'http://images.io/1.jpg');
       remainingTeasers[0].props.link.should.have.property('href', '/1');
     });
@@ -58,6 +58,20 @@ describe('StoryCollection', () => {
       const teaserInMainStoryWrapper = mainStoryWrapper.find(Teaser);
       teaserInMainStoryWrapper.should.have.length(1);
       teaserInMainStoryWrapper.get(0).should.equal(firstTeaser);
+    });
+    it('First teaser gets its title cut to 70 characters', () => {
+      fakeStories[0].title = Array(90).join('X');
+      collection = mount(
+        <StoryCollection
+          stories={fakeStories}
+          date={fakeDate}
+          changed={fakeChanged}
+          label={fakeLabel}
+        />
+      );
+      const firstTeaser = collection.find(Teaser).get(0);
+      firstTeaser.props.title.should.have.length(70);
+      firstTeaser.props.title.should.match(/^X{67}\.\.\.$/);
     });
   });
 });

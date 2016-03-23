@@ -6,8 +6,12 @@ export function StoryCollectionStory({ story, isFirst }) {
   if (!story) {
     return (<div />);
   }
-  const { title, source, image, webUrl } = story;
+  let { title, source, image, webUrl } = story;
   if (isFirst) {
+    if (title.length > 70) {
+      // Deter editors from writing huge titles
+      title = title.substring(0, 67) + '...';
+    }
     return (
       <div
         className="story-collection__main-story"
