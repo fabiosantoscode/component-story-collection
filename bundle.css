@@ -409,23 +409,35 @@ body {
   .story-collection__rest {
     width: 40%;
   }
+  .story-collection__changed {
+    clear: both;
+    float: right;
+    width: 40%;
+    height: 0px;
+    /* Pull myself up by my own height */
+    top: -1.34em;
+    position: relative;
+  }
 }
 
 @media screen and (min-width: 1100px) {
   .story-collection {
     padding: 1.5rem;
   }
+  .story-collection__wrapper {
+    padding: 2rem;
+  }
   .story-collection__main-story {
     width: 66.66%;
   }
+  .story-collection__changed,
   .story-collection__rest {
     width: 33.33%;
   }
   .story-collection__main .teaser__group-text {
     margin-bottom: -0.3em;
-  }
-  .story-collection__wrapper {
-    padding: 2rem;
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
   }
   .story-collection__main-story .teaser__flytitle {
     font-size: 0.79012em;

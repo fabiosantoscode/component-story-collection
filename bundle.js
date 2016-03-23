@@ -75,7 +75,7 @@ function StoryCollection(_ref2) {
   });
   var changedText = changed ? _react2['default'].createElement('div', { className: 'story-collection__changed' }, 'Last updated: ' + changed) : null;
   var dateText = date ? _react2['default'].createElement('div', { className: 'story-collection__date' }, date) : null;
-  return _react2['default'].createElement('div', { className: 'story-collection__wrapper' }, _react2['default'].createElement('aside', { className: (0, _classnames2['default'])('story-collection', className) }, _react2['default'].createElement('div', { className: 'story-collection__head' }, _react2['default'].createElement('div', { className: 'story-collection__label' }, label), dateText), firstStory, _react2['default'].createElement('div', { className: 'story-collection__rest' }, remainingStories, changedText)));
+  return _react2['default'].createElement('div', { className: 'story-collection__wrapper' }, _react2['default'].createElement('aside', { className: (0, _classnames2['default'])('story-collection', className) }, _react2['default'].createElement('div', { className: 'story-collection__head' }, _react2['default'].createElement('div', { className: 'story-collection__label' }, label), dateText), firstStory, _react2['default'].createElement('div', { className: 'story-collection__rest' }, remainingStories), changedText));
 }
 
 if (process.env.NODE_ENV !== 'production') {
@@ -69977,9 +69977,9 @@ function StoryCollection(_ref2) {
       _react2['default'].createElement(
         'div',
         { className: 'story-collection__rest' },
-        remainingStories,
-        changedText
-      )
+        remainingStories
+      ),
+      changedText
     )
   );
 }
