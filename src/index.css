@@ -21,7 +21,7 @@
 .story-collection {
   overflow: hidden;
   margin: 0 auto;
-  padding: var(--storycollection-inner-spacing);
+  padding: var(--storycollection-inner-spacing, var(--storycollection-default-inner-spacing));
   font-family: var(--fontfamily-sans);
   font-size: 1rem;
   background: var(--color-thimphu);
