@@ -69894,22 +69894,27 @@ var _classnames = require('classnames');
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
+var defaultTitleLengthLimit = 70;
+var lengthOfThreeConsecutiveDots = 3;
+
 function StoryCollectionStory(_ref) {
   var story = _ref.story;
   var isFirst = _ref.isFirst;
+  var _ref$titleLengthLimit = _ref.titleLengthLimit;
+  var titleLengthLimit = _ref$titleLengthLimit === undefined ? defaultTitleLengthLimit : _ref$titleLengthLimit;
 
   if (!story) {
     return _react2['default'].createElement('div', null);
   }
-  var title = story.title;
   var source = story.source;
   var image = story.image;
   var webUrl = story.webUrl;
 
+  var title = story.title;
   if (isFirst) {
-    if (title.length > 70) {
+    if (title.length > titleLengthLimit) {
       // Deter editors from writing huge titles
-      title = title.substring(0, 67) + '...';
+      title = title.substring(0, titleLengthLimit - lengthOfThreeConsecutiveDots) + '...';
     }
     return _react2['default'].createElement(
       'div',
@@ -70000,7 +70005,8 @@ if (process.env.NODE_ENV !== 'production') {
   };
   StoryCollectionStory.propTypes = {
     story: storyShape,
-    isFirst: _react2['default'].PropTypes.bool
+    isFirst: _react2['default'].PropTypes.bool,
+    titleLengthLimit: _react2['default'].PropTypes.number
   };
 }
 
@@ -70014,13 +70020,11 @@ function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
 
 require('babel-polyfill');
 
+/* eslint-disable sort-imports */
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
-
-var _ = require('..');
-
-var _2 = _interopRequireDefault(_);
 
 var _chai = require('chai');
 
@@ -70030,30 +70034,35 @@ var _chaiEnzyme = require('chai-enzyme');
 
 var _chaiEnzyme2 = _interopRequireDefault(_chaiEnzyme);
 
+var _enzyme = require('enzyme');
+
 var _economistComponentTeaser = require('@economist/component-teaser');
 
 var _economistComponentTeaser2 = _interopRequireDefault(_economistComponentTeaser);
 
-var _enzyme = require('enzyme');
+var _ = require('..');
 
+var _2 = _interopRequireDefault(_);
+
+/* eslint-enable sort-imports */
 _chai2['default'].should();
 _chai2['default'].use((0, _chaiEnzyme2['default'])());
 describe('StoryCollection', function () {
   describe('Rendering', function () {
-    var fakeStories = undefined;
-    var collection = undefined;
-    var fakeLabel = undefined;
-    var fakeDate = undefined;
-    var fakeChanged = undefined;
+    var fakeStories = null;
+    var collection = null;
+    var fakeLabel = null;
+    var fakeDate = null;
+    var fakeChanged = null;
     beforeEach(function () {
-      var genFakeStory = function genFakeStory(i) {
+      function genFakeStory(i) {
         return {
           title: 'Fake title ' + i,
           source: 'Fake source ' + i,
           image: 'http://images.io/' + i + '.jpg',
           webUrl: '/' + i
         };
-      };
+      }
       fakeLabel = 'I am the label';
       fakeDate = '31 Feb 2016';
       fakeChanged = '4:00 GMT';
