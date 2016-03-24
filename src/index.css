@@ -63,7 +63,7 @@
   display: block;
   position: relative;
   width: var(--storycollection-red-label-width, var(--storycollection-default-red-label-width));
-  height: var(--storycollection-red-label-height, var(--storycollection-default-red-label-width));
+  height: var(--storycollection-red-label-height, var(--storycollection-default-red-label-height));
   margin-bottom: var(--grid-spacing-hedgehog);
   background: var(--color-economist);
 }
@@ -88,6 +88,7 @@
 
 .story-collection__label {
   display: inline-block;
+  margin: 0;
   margin-right: var(--grid-spacing-fox);
   color: var(--color-beijing);
   font-weight: bold;
@@ -156,7 +157,7 @@
     bottom: 0;
     left: 0;
     max-width: 70%;
-    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge, var(--storycollection-default-story-text-nudge)));
+    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge, var(--storycollection-default-main-story-text-nudge)));
     padding: var(--storycollection-main-text-padding, var(--storycollection-default-main-text-padding));
     padding-bottom: 0;
     padding-left: 0;
@@ -175,7 +176,7 @@
   .story-collection__main-story .teaser {
     margin-top: 0;
     margin-right: var(--grid-gutter-l);
-    padding-bottom: var(--storycollection-main-story-text-nudge, var(--storycollection-default-story-text-nudge));
+    padding-bottom: var(--storycollection-main-story-text-nudge, var(--storycollection-default-main-story-text-nudge));
   }
   .story-collection__rest {
     width: 40%;
@@ -206,7 +207,7 @@
     width: 33.33%;
   }
   .story-collection__main .teaser__group-text {
-    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge, var(--storycollection-default-story-text-nudge)));
+    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge, var(--storycollection-default-main-story-text-nudge)));
     padding-top: var(--storycollection-main-story-desktop-white-padding, var(--storycollection-default-main-story-desktop-white-padding));
     padding-right: var(--storycollection-main-story-desktop-white-padding, var(--storycollection-default-main-story-desktop-white-padding));
   }
