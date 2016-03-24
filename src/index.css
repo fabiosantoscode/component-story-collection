@@ -157,7 +157,7 @@
   }
   .story-collection__main-story .teaser__group-text {
     right: auto;
-    width: 70%;
+    max-width: 70%;
     position: absolute;
     bottom: 0;
     left: 0;
