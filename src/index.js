@@ -12,7 +12,7 @@ export function StoryCollectionStory({
   if (!story) {
     return (<div />);
   }
-  const { source, image, webUrl } = story;
+  const { source, image, webUrl, itemProp, itemType } = story;
   let title = story.title;
   if (isFirst) {
     if (title.length > titleLengthLimit) {
@@ -28,6 +28,8 @@ export function StoryCollectionStory({
           flyTitle={source}
           title={title}
           link={{ href: webUrl }}
+          itemProp={itemProp}
+          itemType={itemType}
         />
       </div>
     );
@@ -38,6 +40,8 @@ export function StoryCollectionStory({
       flyTitle={source}
       title={title}
       link={{ href: webUrl }}
+      itemProp={itemProp}
+      itemType={itemType}
     />
   );
 }
@@ -48,6 +52,7 @@ export default function StoryCollection({
   date,
   changed,
   label = 'What matters today',
+  itemType = 'https://bib.schema.org/Collection',
 }) {
   const firstStory = (
     <StoryCollectionStory story={stories[0]} isFirst />
@@ -75,11 +80,11 @@ export default function StoryCollection({
     null;
   return (
     <div className="story-collection__wrapper">
-      <aside className={classnames('story-collection', className)}>
+      <aside className={classnames('story-collection', className)} itemScope itemType={itemType}>
         <div className="story-collection__head">
-          <div className="story-collection__label">
+          <h1 className="story-collection__label">
             {label}
-          </div>
+          </h1>
           {dateText}
         </div>
         {firstStory}
@@ -98,6 +103,8 @@ if (process.env.NODE_ENV !== 'production') {
     source: React.PropTypes.string,
     image: React.PropTypes.string,
     webUrl: React.PropTypes.string,
+    itemType: React.PropTypes.string,
+    itemProp: React.PropTypes.string,
   });
   StoryCollection.propTypes = {
     stories: React.PropTypes.arrayOf(storyShape),
@@ -105,6 +112,7 @@ if (process.env.NODE_ENV !== 'production') {
     changed: React.PropTypes.string,
     className: React.PropTypes.string,
     label: React.PropTypes.string,
+    itemType: React.PropTypes.string,
   };
   StoryCollectionStory.propTypes = {
     story: storyShape,
