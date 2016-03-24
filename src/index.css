@@ -3,20 +3,19 @@
 @import '@economist/component-grid';
 
 :root {
-  --storycollection-main-story-text-nudge: 0.3em;
-  --storycollection-main-story-text-nudge-desktop: 0.5em;
-  --storycollection-red-label-width: 47px;
-  --storycollection-red-label-height: 7px;
-  --storycollection-chasm-height: 5px;
-  --storycollection-inner-spacing: var(--grid-gutter-xs);
-  --storycollection-outer-spacing: var(--grid-gutter-xs);
-  --storycollection-inner-spacing-tablet: var(--grid-gutter-s);
-  --storycollection-outer-spacing-tablet: var(--grid-gutter-xs);
-  --storycollection-inner-spacing-desktop: var(--grid-gutter-l);
-  --storycollection-outer-spacing-desktop: var(--grid-gutter-xl);
+  --storycollection-default-main-story-text-nudge: 0.3em;
+  --storycollection-default-red-label-width: 47px;
+  --storycollection-default-red-label-height: 7px;
+  --storycollection-default-chasm-height: 5px;
+  --storycollection-default-inner-spacing: var(--grid-gutter-xs);
+  --storycollection-default-outer-spacing: var(--grid-gutter-xs);
+  --storycollection-default-inner-spacing-tablet: var(--grid-gutter-s);
+  --storycollection-default-outer-spacing-tablet: var(--grid-gutter-xs);
+  --storycollection-default-inner-spacing-desktop: var(--grid-gutter-l);
+  --storycollection-default-outer-spacing-desktop: var(--grid-gutter-xl);
 
-  --storycollection-main-text-padding: var(--grid-spacing-rabbit);
-  --storycollection-main-story-desktop-white-padding: var(--grid-gutter-l);
+  --storycollection-default-main-text-padding: var(--grid-spacing-rabbit);
+  --storycollection-default-main-story-desktop-white-padding: var(--grid-gutter-l);
 }
 
 .story-collection {
@@ -30,7 +29,7 @@
 
 .story-collection__wrapper {
   overflow: hidden;
-  padding: var(--storycollection-outer-spacing);
+  padding: var(--storycollection-outer-spacing, var(--storycollection-default-outer-spacing));
   background-color: var(--color-berlin);
 }
 
@@ -63,8 +62,8 @@
   content: '';
   display: block;
   position: relative;
-  width: var(--storycollection-red-label-width);
-  height: var(--storycollection-red-label-height);
+  width: var(--storycollection-red-label-width, var(--storycollection-default-red-label-width));
+  height: var(--storycollection-red-label-height, var(--storycollection-default-red-label-width));
   margin-bottom: var(--grid-spacing-hedgehog);
   background: var(--color-economist);
 }
@@ -110,10 +109,10 @@
   content: '';
   display: block;
   width: auto;
-  height: var(--storycollection-chasm-height);
-  margin-right: calc(-1 * var(--storycollection-inner-spacing));
+  height: var(--storycollection-chasm-height, var(--storycollection-default-chasm-height));
+  margin-right: calc(-1 * var(--storycollection-inner-spacing, var(--storycollection-default-inner-spacing)));
   margin-bottom: var(--grid-spacing-rabbit);
-  margin-left: calc(-1 * var(--storycollection-inner-spacing));
+  margin-left: calc(-1 * var(--storycollection-inner-spacing, var(--storycollection-default-inner-spacing)));
   background: var(--color-berlin);
 }
 
@@ -140,10 +139,10 @@
     display: none;
   }
   .story-collection {
-    padding: var(--storycollection-inner-spacing-tablet);
+    padding: var(--storycollection-inner-spacing-tablet, var(--storycollection-default-inner-spacing-tablet));
   }
   .story-collection__wrapper {
-    padding: var(--storycollection-outer-spacing-tablet);
+    padding: var(--storycollection-outer-spacing-tablet, var(--storycollection-default-outer-spacing-tablet));
   }
   .story-collection__main-story .teaser__group-image {
     margin: 0;
@@ -157,8 +156,8 @@
     bottom: 0;
     left: 0;
     max-width: 70%;
-    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge));
-    padding: var(--storycollection-main-text-padding);
+    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge, var(--storycollection-default-story-text-nudge)));
+    padding: var(--storycollection-main-text-padding, var(--storycollection-default-main-text-padding));
     padding-bottom: 0;
     padding-left: 0;
     background: var(--color-thimphu);
@@ -176,7 +175,7 @@
   .story-collection__main-story .teaser {
     margin-top: 0;
     margin-right: var(--grid-gutter-l);
-    padding-bottom: var(--storycollection-main-story-text-nudge);
+    padding-bottom: var(--storycollection-main-story-text-nudge, var(--storycollection-default-story-text-nudge));
   }
   .story-collection__rest {
     width: 40%;
@@ -194,10 +193,10 @@
 
 @media screen and (min-width: 1100px) {
   .story-collection {
-    padding: var(--storycollection-inner-spacing-desktop);
+    padding: var(--storycollection-inner-spacing-desktop, var(--storycollection-default-inner-spacing-desktop));
   }
   .story-collection__wrapper {
-    padding: var(--storycollection-outer-spacing-desktop);
+    padding: var(--storycollection-outer-spacing-desktop, var(--storycollection-default-outer-spacing-desktop));
   }
   .story-collection__main-story {
     width: 66.66%;
@@ -207,9 +206,9 @@
     width: 33.33%;
   }
   .story-collection__main .teaser__group-text {
-    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge));
-    padding-top: var(--storycollection-main-story-desktop-white-padding);
-    padding-right: var(--storycollection-main-story-desktop-white-padding);
+    margin-bottom: calc(-1 * var(--storycollection-main-story-text-nudge, var(--storycollection-default-story-text-nudge)));
+    padding-top: var(--storycollection-main-story-desktop-white-padding, var(--storycollection-default-main-story-desktop-white-padding));
+    padding-right: var(--storycollection-main-story-desktop-white-padding, var(--storycollection-default-main-story-desktop-white-padding));
   }
   .story-collection__main-story .teaser__flytitle {
     font-size: var(--storycollection-main-story-desktop-flytitle-font-size, 0.79em);
