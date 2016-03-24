@@ -1,26 +1,30 @@
 import 'babel-polyfill';
+/* eslint-disable sort-imports */
 import React from 'react';
-import StoryCollection from '..';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme';
-import Teaser from '@economist/component-teaser';
 import { mount } from 'enzyme';
+import Teaser from '@economist/component-teaser';
+import StoryCollection from '..';
+/* eslint-enable sort-imports */
 chai.should();
 chai.use(chaiEnzyme());
 describe('StoryCollection', () => {
   describe('Rendering', () => {
-    let fakeStories;
-    let collection;
-    let fakeLabel;
-    let fakeDate;
-    let fakeChanged;
+    let fakeStories = null;
+    let collection = null;
+    let fakeLabel = null;
+    let fakeDate = null;
+    let fakeChanged = null;
     beforeEach(() => {
-      const genFakeStory = (i) => ({
-        title: `Fake title ${ i }`,
-        source: `Fake source ${ i }`,
-        image: `http://images.io/${ i }.jpg`,
-        webUrl: `/${ i }`,
-      });
+      function genFakeStory(i) {
+        return {
+          title: `Fake title ${ i }`,
+          source: `Fake source ${ i }`,
+          image: `http://images.io/${ i }.jpg`,
+          webUrl: `/${ i }`,
+        };
+      }
       fakeLabel = 'I am the label';
       fakeDate = '31 Feb 2016';
       fakeChanged = '4:00 GMT';

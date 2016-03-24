@@ -2,15 +2,22 @@ import React from 'react';
 import Teaser from '@economist/component-teaser';
 import classnames from 'classnames';
 
-export function StoryCollectionStory({ story, isFirst }) {
+const defaultTitleLengthLimit = 70;
+const lengthOfThreeConsecutiveDots = 3;
+export function StoryCollectionStory({
+  story,
+  isFirst,
+  titleLengthLimit = defaultTitleLengthLimit,
+}) {
   if (!story) {
     return (<div />);
   }
-  let { title, source, image, webUrl } = story;
+  const { source, image, webUrl } = story;
+  let title = story.title;
   if (isFirst) {
-    if (title.length > 70) {
+    if (title.length > titleLengthLimit) {
       // Deter editors from writing huge titles
-      title = title.substring(0, 67) + '...';
+      title = `${ title.substring(0, titleLengthLimit - lengthOfThreeConsecutiveDots) }...`;
     }
     return (
       <div
@@ -102,6 +109,7 @@ if (process.env.NODE_ENV !== 'production') {
   StoryCollectionStory.propTypes = {
     story: storyShape,
     isFirst: React.PropTypes.bool,
+    titleLengthLimit: React.PropTypes.number,
   };
 }
 
