@@ -69909,6 +69909,8 @@ function StoryCollectionStory(_ref) {
   var source = story.source;
   var image = story.image;
   var webUrl = story.webUrl;
+  var itemProp = story.itemProp;
+  var itemType = story.itemType;
 
   var title = story.title;
   if (isFirst) {
@@ -69925,7 +69927,9 @@ function StoryCollectionStory(_ref) {
         image: { src: image },
         flyTitle: source,
         title: title,
-        link: { href: webUrl }
+        link: { href: webUrl },
+        itemProp: itemProp,
+        itemType: itemType
       })
     );
   }
@@ -69933,7 +69937,9 @@ function StoryCollectionStory(_ref) {
     image: { src: image },
     flyTitle: source,
     title: title,
-    link: { href: webUrl }
+    link: { href: webUrl },
+    itemProp: itemProp,
+    itemType: itemType
   });
 }
 
@@ -69944,6 +69950,8 @@ function StoryCollection(_ref2) {
   var changed = _ref2.changed;
   var _ref2$label = _ref2.label;
   var label = _ref2$label === undefined ? 'What matters today' : _ref2$label;
+  var _ref2$itemType = _ref2.itemType;
+  var itemType = _ref2$itemType === undefined ? 'https://bib.schema.org/Collection' : _ref2$itemType;
 
   var firstStory = _react2['default'].createElement(StoryCollectionStory, { story: stories[0], isFirst: true });
   var remainingStories = stories.slice(1).map(function (story, index) {
@@ -69967,12 +69975,12 @@ function StoryCollection(_ref2) {
     { className: 'story-collection__wrapper' },
     _react2['default'].createElement(
       'aside',
-      { className: (0, _classnames2['default'])('story-collection', className) },
+      { className: (0, _classnames2['default'])('story-collection', className), itemScope: true, itemType: itemType },
       _react2['default'].createElement(
         'div',
         { className: 'story-collection__head' },
         _react2['default'].createElement(
-          'div',
+          'h1',
           { className: 'story-collection__label' },
           label
         ),
@@ -69994,14 +70002,17 @@ if (process.env.NODE_ENV !== 'production') {
     title: _react2['default'].PropTypes.string,
     source: _react2['default'].PropTypes.string,
     image: _react2['default'].PropTypes.string,
-    webUrl: _react2['default'].PropTypes.string
+    webUrl: _react2['default'].PropTypes.string,
+    itemType: _react2['default'].PropTypes.string,
+    itemProp: _react2['default'].PropTypes.string
   });
   StoryCollection.propTypes = {
     stories: _react2['default'].PropTypes.arrayOf(storyShape),
     date: _react2['default'].PropTypes.string,
     changed: _react2['default'].PropTypes.string,
     className: _react2['default'].PropTypes.string,
-    label: _react2['default'].PropTypes.string
+    label: _react2['default'].PropTypes.string,
+    itemType: _react2['default'].PropTypes.string
   };
   StoryCollectionStory.propTypes = {
     story: storyShape,
@@ -70138,18 +70149,24 @@ var exampleStories = [{
   title: 'You\'ll pay for this!',
   image: 'http://cdn.static-economist.com/sites/default/files/20150516_BLP510_0.jpg',
   source: 'The Economist online',
-  webUrl: '/whichmba/financing-embas-youll-pay'
+  webUrl: '/whichmba/financing-embas-youll-pay',
+  itemType: 'https://schema.org/BlogPosting',
+  itemProp: 'blogPost'
 }, {
   title: 'Keeping it on the company campus',
   image: 'http://cdn.static-economist.com/sites/default/files/20150516_WBD001.jpg',
   source: 'The Economist online',
-  webUrl: '/news/business/21651217-more-firms-have-set-up-their-own-corporate-universities-they-have-become-less-willing-pay'
+  webUrl: '/news/business/21651217-more-firms-have-set-up-their-own-corporate-universities-they-have-become-less-willing-pay',
+  itemType: 'https://schema.org/BlogPosting',
+  itemProp: 'blogPost'
 }, {
   title: 'EMBA supercommuters: Interminable terminals',
   image: 'http://cdn.static-economist.com/sites/default/files/20150516_BLP511_0.jpg',
   source: 'The Economist online',
   webUrl: '/whichmba/emba-supercommuters-interminable-terminals'
-}, {
+}, /* itemType defaults to component-teaser's default itemType, Article */
+/* itemProp defaults to component-teaser's default itemProp, article */
+{
   title: 'Donald Trump reveals his isolationist foreign-policy instincts',
   image: 'http://cdn.static-economist.com/sites/default/files/images/2016/03/blogs/democracy-america/20160326_usp504.jpg',
   source: 'Democray in America',
@@ -70157,7 +70174,12 @@ var exampleStories = [{
 }];
 /* eslint-enable max-len */
 
-exports['default'] = _react2['default'].createElement(_2['default'], { stories: exampleStories, date: 'Mar 14th 2016', changed: '13.01 GMT' });
+exports['default'] = _react2['default'].createElement(_2['default'], {
+  stories: exampleStories,
+  date: 'Mar 14th 2016',
+  changed: '13.01 GMT',
+  itemType: 'https://bib.schema.org/Collection'
+});
 module.exports = exports['default'];
 
 },{"./":748,"babel-polyfill":4,"react":"react"}],"react-dom":[function(require,module,exports){
