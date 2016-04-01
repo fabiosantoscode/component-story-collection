@@ -1,5 +1,5 @@
 @import '@economist/component-palette';
-@import '@economist/component-teaser/lib';
+@import '@economist/component-teaser';
 @import '@economist/component-grid';
 
 :root {
