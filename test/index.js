@@ -2,6 +2,7 @@ import 'babel-polyfill';
 /* eslint-disable sort-imports */
 import React from 'react';
 import chai from 'chai';
+import chaiSpies from 'chai-spies';
 import chaiEnzyme from 'chai-enzyme';
 import { mount } from 'enzyme';
 import Teaser from '@economist/component-teaser';
@@ -9,6 +10,7 @@ import StoryCollection from '..';
 /* eslint-enable sort-imports */
 chai.should();
 chai.use(chaiEnzyme());
+chai.use(chaiSpies);
 describe('StoryCollection', () => {
   describe('Rendering', () => {
     let fakeStories = null;
@@ -76,6 +78,16 @@ describe('StoryCollection', () => {
       const firstTeaser = collection.find(Teaser).get(0);
       firstTeaser.props.title.should.have.length(70);
       firstTeaser.props.title.should.match(/^X{67}\.\.\.$/);
+    });
+    it('Stories\' renderLink functions get passed to the teasers', () => {
+      fakeStories[0].renderLink = chai.spy(() => (<div / >));
+      collection = mount(
+        <StoryCollection
+          stories={fakeStories}
+        />
+      );
+      const firstTeaser = collection.find(Teaser).get(0);
+      firstTeaser.props.should.have.property('renderLink', fakeStories[0].renderLink);
     });
   });
 });

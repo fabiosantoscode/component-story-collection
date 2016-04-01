@@ -12,7 +12,7 @@ export function StoryCollectionStory({
   if (!story) {
     return (<div />);
   }
-  const { source, image, webUrl, itemProp, itemType } = story;
+  const { source, image, webUrl, itemProp, itemType, renderLink } = story;
   let title = story.title;
   if (isFirst) {
     if (title.length > titleLengthLimit) {
@@ -28,6 +28,7 @@ export function StoryCollectionStory({
           flyTitle={source}
           title={title}
           link={{ href: webUrl }}
+          renderLink={renderLink}
           itemProp={itemProp}
           itemType={itemType}
         />
@@ -103,6 +104,7 @@ if (process.env.NODE_ENV !== 'production') {
     source: React.PropTypes.string,
     image: React.PropTypes.string,
     webUrl: React.PropTypes.string,
+    renderLink: React.PropTypes.func,
     itemType: React.PropTypes.string,
     itemProp: React.PropTypes.string,
   });
