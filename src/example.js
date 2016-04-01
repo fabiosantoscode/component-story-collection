@@ -10,6 +10,9 @@ const exampleStories = [
     webUrl: '/whichmba/financing-embas-youll-pay',
     itemType: 'https://schema.org/BlogPosting',
     itemProp: 'blogPost',
+    renderLink: function renderLink(props) {
+      return (<a {...props} title="Hello, I'm a custom link title!" />);
+    },
   },
   {
     title: 'Keeping it on the company campus',
